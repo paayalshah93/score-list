@@ -1,0 +1,57 @@
+<div class="m-3 content">
+  <form class="row">
+    <div class="col-5 form-group form-inline">
+      Search Score List by Name:
+      <input class="form-control ml-2" type="text" name="searchTerm" (input)="search($event)" />
+    </div>
+    <div class=" col-5 form-group form-inline">
+      Enter name to be added:
+      <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="name" />
+
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="addName()">ADD NAME</button>
+    </div>
+  </form>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="name">NAME
+          <span class="sort" (click)="sortAscending('name')">
+            <img src="../../assets/asc.png" class="mr-2" style="width: 10px">
+          </span>
+          <span class="sort" (click)="sortDescending('name')">
+            <img src="../../assets/dsc.png" class="mr-2" style="width: 10px">
+          </span>
+        </th>
+        <th scope="col" sortable="area">SCORE
+          <span class="sort" (click)="sortAscending('score')">
+            <img src="../../assets/asc.png" class="mr-2" style="width: 10px">
+          </span>
+          <span class="sort" (click)="sortDescending('score')">
+            <img src="../../assets/dsc.png" class="mr-2" style="width: 10px">
+          </span>
+        </th>
+        <th scope="col" sortable="population">DELETE
+        </th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let score of marksTemp| paginate: { itemsPerPage: 10, currentPage: p }; index as i">
+        <th scope="row">{{ (p -1) * 10 + i + 1 }}</th>
+        <td>
+          {{ score.name }}
+        </td>
+
+        <td>{{ getScore(score.score, p, i) }}</td>
+        <td>
+          <img src="../../assets/remove.png" class="mr-2" style="width: 20px" (click)="deleteEntry(score)">
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

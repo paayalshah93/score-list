@@ -1,0 +1,33 @@
+.content {
+    padding: 30px;
+  }
+
+  table {
+
+    margin-top: 2%;
+    table-layout: fixed;
+    width: 100%;
+  }
+  
+  th,
+  td {
+    width: 50%;
+    overflow: hidden;
+  }
+
+  .sort {
+    cursor: pointer;
+  }
+
+  .sort:hover {
+    color: brown;
+  }
+
+  .remove-sort {
+    align-items: right;
+    cursor: pointer;
+  }
+
+  button {
+    margin-top: 12%;
+  }

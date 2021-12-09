@@ -1,0 +1,15 @@
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 80%;
+    cursor: pointer;
+    color:black;
+    font-weight: bold;
+    font-style: italic;
+    font-family: cursive;
+    transform: translate(-50%, -50%);
+  }
+
+  .centered:hover {
+    text-decoration: underline;
+  }
